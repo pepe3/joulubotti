@@ -38,7 +38,7 @@ module.exports = {
         // Kutsutaan funktiota ja tulostetaan tulos
         const result = countDaysUntilChristmas();
         await interaction.reply({
-            content: result.days + ' päivää ja ' + result.nights + ' yötä Jouluun!🎅',
+            content: result.days + ' päivää ja ' + result.nights + ' yötä Jouluun!',
             components: [],
             withResponse: true,
         });
