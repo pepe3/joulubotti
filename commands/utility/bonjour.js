@@ -8,7 +8,7 @@ const VOICE_CHANNEL_ID = '1304520203501178981';
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('bonjour')
-        .setDescription('Replies with Pong!'),
+        .setDescription('Kutsuu botin kanavalle, joka alkaa soittamaan joululaulua'),
 
     async execute(interaction) {
         console.log('Starting Christmas music playback!');
@@ -34,8 +34,8 @@ module.exports = {
         });
         connection.subscribe(player);
 
-        const songUrl = 'https://www.youtube.com/watch?v=OfSESrxRtSE';
-        const stream = ytdl(songUrl, { filter: 'audioonly' });
+        const songUrl = 'https://www.youtube.com/watch?v=x9WO2ieJMYk';
+        const stream = ytdl(songUrl, { filter: 'audioonly', quality: 'highestaudio', highWaterMark: 1 << 25 });
         const resource = createAudioResource(stream);
 
         player.play(resource);

@@ -31,7 +31,7 @@ function countDaysUntilChristmas() {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('joulu')
-        .setDescription('Replies with days and nights until Christmas!'),
+        .setDescription('Palauttaa montako yötä ja päivää on jäljellä jouluaattoon'),
 
     async execute(interaction) {
 
