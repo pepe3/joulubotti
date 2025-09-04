@@ -3,7 +3,7 @@ const { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerSta
 const ytdl = require("@distube/ytdl-core");
 const playdl = require('play-dl');
 
-const VOICE_CHANNEL_ID = '1304520203501178981';
+const VOICE_CHANNEL_ID = process.env.VOICE_CHANNEL_ID;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -34,7 +34,7 @@ module.exports = {
         });
         connection.subscribe(player);
 
-        const songUrl = 'https://www.youtube.com/watch?v=x9WO2ieJMYk';
+        const songUrl = 'https://www.youtube.com/watch?v=6fxovUQ06KA';
         const stream = ytdl(songUrl, { filter: 'audioonly', quality: 'highestaudio', highWaterMark: 1 << 25 });
         const resource = createAudioResource(stream);
 
