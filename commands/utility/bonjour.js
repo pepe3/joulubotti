@@ -8,7 +8,7 @@ const VOICE_CHANNEL_ID = process.env.VOICE_CHANNEL_ID;
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('bonjour')
-        .setDescription('Kutsuu botin kanavalle, joka alkaa soittamaan joululaulua'),
+        .setDescription('Kutsuu botin kanavalle, joka soittaa biisin Youtubesta ja lähtee vihtuun.'),
 
     async execute(interaction) {
         console.log('Starting Christmas music playback!');
@@ -34,7 +34,7 @@ module.exports = {
         });
         connection.subscribe(player);
 
-        const songUrl = 'https://www.youtube.com/watch?v=6fxovUQ06KA';
+        const songUrl = 'https://www.youtube.com/watch?v=uauCOB7MVnI';
         const stream = ytdl(songUrl, { filter: 'audioonly', quality: 'highestaudio', highWaterMark: 1 << 25 });
         const resource = createAudioResource(stream);
 
