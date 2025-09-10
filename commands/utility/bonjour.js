@@ -1,14 +1,11 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerStatus, NoSubscriberBehavior } = require('@discordjs/voice');
 const ytdl = require("@distube/ytdl-core");
-const playdl = require('play-dl');
-
-const VOICE_CHANNEL_ID = process.env.VOICE_CHANNEL_ID;
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('bonjour')
-        .setDescription('Kutsuu botin kanavalle, joka soittaa biisin Youtubesta ja lähtee vihtuun.'),
+        .setDescription('Kutsuu botin kanavalle, joka alkaa soittamaan joululaulua'),
 
     async execute(interaction) {
         console.log('Starting Christmas music playback!');
@@ -22,7 +19,7 @@ module.exports = {
         }
 
         const connection = joinVoiceChannel({
-            channelId: VOICE_CHANNEL_ID,
+            channelId: "1304520203501178981",
             guildId: channel.guild.id,
             adapterCreator: channel.guild.voiceAdapterCreator,
         });
