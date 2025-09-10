@@ -34,7 +34,7 @@ module.exports = {
         });
         connection.subscribe(player);
 
-        const songUrl = 'https://www.youtube.com/watch?v=uauCOB7MVnI';
+        const songUrl = 'https://www.youtube.com/watch?v=MXP6wTyMnGo';
         const stream = ytdl(songUrl, { filter: 'audioonly', quality: 'highestaudio', highWaterMark: 1 << 25 });
         const resource = createAudioResource(stream);
 
