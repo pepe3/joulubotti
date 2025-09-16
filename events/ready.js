@@ -9,5 +9,4 @@ module.exports = {
             console.log('running a task every minute');
         });
         console.log(`Ready! Logged in as ${client.user.tag}`);
-    },
 };
