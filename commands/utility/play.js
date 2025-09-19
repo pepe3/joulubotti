@@ -23,7 +23,7 @@ module.exports = {
         }
 
         const connection = joinVoiceChannel({
-            channelId: "1304520203501178981",
+            channelId: process.env.CHANNEL_ID,
             guildId: channel.guild.id,
             adapterCreator: channel.guild.voiceAdapterCreator,
         });
