@@ -1,4 +1,4 @@
-FROM node:20.11.0
+FROM node:22.19.0
 
 # Create the bot's directory
 RUN mkdir -p /usr/src/bot
