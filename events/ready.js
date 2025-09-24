@@ -6,7 +6,7 @@ module.exports = {
     name: Events.ClientReady,
     once: true,
     execute(client) {
-        cron.schedule('2 9 * * *', () => {
+        cron.schedule('0 8 * * *', () => {
 
             console.log('running a task every day at 8:00');
             // Hae kanava, johon haluat lähettää viestin
