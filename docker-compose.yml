@@ -2,3 +2,5 @@ services:
   joulubotti:
     build: .
     restart: unless-stopped
+    environment:
+      - TZ=Europe/Helsinki
