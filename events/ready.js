@@ -14,13 +14,13 @@ module.exports = {
 
             // Kutsu komentoa ja lähetä viesti kanavalle
             joulu.execute({
-            reply: (message) => {
-                if (channel) {
-                channel.send(message);
-                } else {
-                console.log('Kanavaa ei löytynyt');
+                reply: (message) => {
+                    if (channel) {
+                        channel.send(message);
+                    } else {
+                        console.log('Kanavaa ei löytynyt');
+                    }
                 }
-            }
             });
         });
         console.log(`Ready! Logged in as ${client.user.tag}`);
