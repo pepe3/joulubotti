@@ -9,7 +9,7 @@ module.exports = {
 		.addIntegerOption((option) =>
 			option.setName('sivunumero')
 				.setDescription('Näytä tämä Teksti TV sivu')
-				.setMaxValue(900)
+				.setMaxValue(899)
 				.setMinValue(100)
 		),
 
