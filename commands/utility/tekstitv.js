@@ -35,7 +35,7 @@ module.exports = {
 		const response = await request(currentPageUrl);
 		const json = await response.body.json();
 
-		for (let index = 2; index < json.teletext.page.subpagecount; index++) {
+		for (let index = 2; index <= json.teletext.page.subpagecount; index++) {
 			subpages.push(index);
 		}
 
