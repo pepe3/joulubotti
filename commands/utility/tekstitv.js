@@ -31,7 +31,7 @@ module.exports = {
 		// 	// hae edellisen pääsivun numero
 		// }
 
-		const currentPageUrl = `https://external.api.yle.fi/v1/teletext/pages/${pageNumber}.json?app_id=e9b08e2d2dcca4dc62d2f1e3ebfd456b&app_key=adace51a`;
+		const currentPageUrl = `https://external.api.yle.fi/v1/teletext/pages/${pageNumber}.json?app_id=${process.env.YLE_APP_ID}&app_key=${process.env.YLE_API_KEY}`;
 		const response = await request(currentPageUrl);
 		const json = await response.body.json();
 
@@ -64,7 +64,7 @@ module.exports = {
 			console.log(`fetching.. ${pageNumber}/${subpage}`)
 			items.push({
 				media: {
-					url: `https://external.api.yle.fi/v1/teletext/images/${pageNumber}/${subpage}.png?app_id=e9b08e2d2dcca4dc62d2f1e3ebfd456b&app_key=adace51a`
+					url: `https://external.api.yle.fi/v1/teletext/images/${pageNumber}/${subpage}.png?app_id=${process.env.YLE_APP_ID}&app_key=${process.env.YLE_API_KEY}`
 				}
 			})
 		});
