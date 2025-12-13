@@ -15,21 +15,29 @@ module.exports = {
 
 	async execute(interaction) {
 
-		const pageNumber = interaction.options.get('sivunumero') ?? 100;
+		let pageNumber = 100;
+
+		if (interaction.options) {
+			pageNumber = interaction.options.get("sivunumero").value
+		}
 
 		let subpages = [1];
+
 		// if (interaction.isButton()) {
+		// 	// hae seuraava pääsivun numero
 		// 	if (interaction.customId == 'nextPageButton') {
 
-		// hae seuraava sivun numero
-		const currentPageUrl = `https://external.api.yle.fi/v1/teletext/pages/${pageNumber.value}.json?app_id=e9b08e2d2dcca4dc62d2f1e3ebfd456b&app_key=adace51a`;
+		// 	}
+		// 	// hae edellisen pääsivun numero
+		// }
+
+		const currentPageUrl = `https://external.api.yle.fi/v1/teletext/pages/${pageNumber}.json?app_id=e9b08e2d2dcca4dc62d2f1e3ebfd456b&app_key=adace51a`;
 		const response = await request(currentPageUrl);
 		const json = await response.body.json();
-		for (let index = 1; index < json.teletext.page.subpagecount; index++) {
+
+		for (let index = 2; index < json.teletext.page.subpagecount; index++) {
 			subpages.push(index);
 		}
-		// 	}
-		// }
 
 		const separator = new SeparatorBuilder()
 			.setSpacing(SeparatorSpacingSize.Small)
@@ -38,23 +46,25 @@ module.exports = {
 
 			.setCustomId('prevPageButton')
 			.setLabel('Edellinen')
+			.setDisabled(true)
 			.setStyle(ButtonStyle.Primary)
 
 		const nextPageButton = new ButtonBuilder()
 
 			.setCustomId('nextPageButton')
 			.setLabel('Seuraava')
+			.setDisabled(true)
 			.setStyle(ButtonStyle.Secondary)
 
 		const row = new ActionRowBuilder()
 			.addComponents([prevPageButton, nextPageButton])
 
-			let items = [];
-			subpages.forEach(subpage => {
-			console.log(subpage)
+		let items = [];
+		subpages.forEach(subpage => {
+			console.log(`fetching.. ${pageNumber}/${subpage}`)
 			items.push({
 				media: {
-					url: `https://external.api.yle.fi/v1/teletext/images/${pageNumber.value}/${subpage}.png?app_id=e9b08e2d2dcca4dc62d2f1e3ebfd456b&app_key=adace51a`
+					url: `https://external.api.yle.fi/v1/teletext/images/${pageNumber}/${subpage}.png?app_id=e9b08e2d2dcca4dc62d2f1e3ebfd456b&app_key=adace51a`
 				}
 			})
 		});
